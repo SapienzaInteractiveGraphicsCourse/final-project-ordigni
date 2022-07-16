@@ -1,7 +1,7 @@
 'use strict';
 
 
-import * as THREE from 'three';
+import * as THREE from './three.module.js';
 
 import { OrbitControls } from './jsm/controls/OrbitControls.js';
 import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';

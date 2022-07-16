@@ -1,7 +1,7 @@
 'use strict';
 
 
-		import * as THREE from 'three';
+			import * as THREE from './three.module.js';
 
 			import { OrbitControls } from './jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from './jsm/loaders/GLTFLoader.js';
@@ -153,7 +153,7 @@
 				modelMesh6 = new THREE.Object3D();
 				
 				const loader = new GLTFLoader();
-				loader.load( '../models/scene.gltf', function ( gltf ) {
+				loader.load( './models/scene.gltf', function ( gltf ) {
 
 					gltf.scene.traverse( function ( object ) {
 
@@ -231,7 +231,7 @@
 				} );
 
 				const loader2 = new GLTFLoader();
-						loader.load( '../models/field/scene.gltf', function ( gltf ) {
+						loader.load( './models/field/scene.gltf', function ( gltf ) {
 
 							scene2.add( gltf.scene );
 
