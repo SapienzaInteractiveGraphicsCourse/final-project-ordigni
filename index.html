@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+		<title>three.js webgl - GLTFloader</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="./css/main.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+	</head>
+
+	<body onload="defaultMode()">
+<canvas id="c"></canvas>
+    <div id="content">
+      <div>
+        <h2 style="margin-top:-50px; color:rgb(255, 238, 0) ;">Kick Off</h2>
+			<ul style="margin-top:-100px" class="menu cf">
+				<li><a href="">Match Time</a>
+					<ul class="submenu">
+						<li><a href="" onclick="return Time(1);">Day</a></li>
+						<li><a href="" onclick="return Time(2);">Sunset</a></li>
+						<li><a href="" onclick="return Time(3);">Night</a></li>
+					  </ul>	
+				</li>
+				
+				<li><a href="">Mode</a>
+					<ul class="submenu">
+						<li><a href="" onclick="return Mode(1);">Beginner</a></li>
+						<li><a href="" onclick="return Mode(2);">Legend</a></li>
+					  </ul>	
+				</li>
+			  </ul>
+			  <br>
+			  <ul style="margin-top:-50px;" class="menu cf">
+				<li >
+				  <a href="">Uniform Player</a>
+				  <ul class="submenu">
+					<li><a href="" onclick="return ColorFP(1);">Green Uniform</a></li>
+					<li><a href="" onclick="return ColorFP(2);">Blue Uniform</a></li>
+				  </ul>			
+				</li>
+				<li><a href="">Uniform Keeper</a>
+					<ul class="submenu">
+						<li><a href="" onclick="return ColorFK(1);" >Red Uniform</a></li>
+						<li><a href="" onclick="return ColorFK(2);">Fucsia Uniform</a></li>
+					  </ul>	
+				</li>
+			  </ul>
+			  <button id = "start1" onclick="location.href='game.html'" class="button button1">Kick Off !</button>
+      </div>
+    </div>
+
+	<script type="module" src="./js/three.module.js"></script>
+	<script type="module" src="./js/main.js"></script>
+
+<script>
+	function Time(t){
+		window.sessionStorage.setItem('Time', t.toString());
+	}
+
+	function ColorFP(c){
+		window.sessionStorage.setItem('ColorPlayer', c.toString());
+	}
+
+	function ColorFK(c){
+		window.sessionStorage.setItem('ColorKeeper', c.toString());
+	}
+
+	function Mode(m){
+		window.sessionStorage.setItem('Mode', m.toString());
+	}
+
+	function defaultMode(){
+		var m=1;
+		window.sessionStorage.setItem('Mode', m.toString());
+		window.sessionStorage.setItem('Time', m.toString());
+	}
+</script>
+
+	</body>
+</html>
+
