@@ -256,7 +256,7 @@ function init() {
 
 	modelball = new THREE.Object3D();
 	const loaderball = new GLTFLoader();
-	loaderball.load( '../models/ball/scene.gltf', function ( gltf ) {
+	loaderball.load( './models/ball/scene.gltf', function ( gltf ) {
 
 		gltf.scene.traverse( function ( object ) {
 			if ( object.isMesh ) object.castShadow = true;
@@ -278,9 +278,9 @@ function init() {
 	const loader7 = new THREE.TextureLoader()
 	const geometry = new THREE.BoxGeometry(1, 1,1)
 	const material3 = new THREE.MeshPhongMaterial()
-	const texture3 = new THREE.TextureLoader().load('../img/mc.jpeg')
+	const texture3 = new THREE.TextureLoader().load('./img/mc.jpeg')
 	material3.map = texture3
-	const normalTexture3 = new THREE.TextureLoader().load('../img/normal_4.png')
+	const normalTexture3 = new THREE.TextureLoader().load('./img/normal_4.png')
 	material3.bumpMap = normalTexture3
 	material3.bumpScale = 10;
 	const cube= new THREE.Mesh(geometry, material3)
@@ -294,10 +294,10 @@ function init() {
 
 	const planeGeometry2 = new THREE.BoxGeometry(1, 1,1)
 	const material2 = new THREE.MeshPhongMaterial()
-	const texture2 = new THREE.TextureLoader().load('../img/juve.jpeg')
+	const texture2 = new THREE.TextureLoader().load('./img/juve.jpeg')
 	material2.map = texture2
 	const normalTexture2 = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	material2.bumpMap = normalTexture2
 	material2.bumpScale = 10;
@@ -317,12 +317,12 @@ function init() {
 
 	const geometry4 = new THREE.BoxGeometry(1, 1,1)
 	const material4 = new THREE.MeshPhongMaterial()
-	const texture4 = new THREE.TextureLoader().load('../img/nike.jpg')
+	const texture4 = new THREE.TextureLoader().load('./img/nike.jpg')
 	material4.map = texture4
 
 
 	const normalTexture4 = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	material4.bumpMap = normalTexture4
 	material4.bumpScale = 10;
@@ -348,12 +348,12 @@ function init() {
 
 	const material5= new THREE.MeshPhongMaterial()
 
-	const texture5 = new THREE.TextureLoader().load('../img/jordan.jpg')
+	const texture5 = new THREE.TextureLoader().load('./img/jordan.jpg')
 	material5.map = texture5
 
 
 	const normalTexture5 = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	material5.bumpMap = normalTexture5
 	material5.bumpScale = 10;
@@ -371,35 +371,35 @@ function init() {
 	/****5****/
 
 	const normalTexture6 = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	var materials6 = [
 	new THREE.MeshPhongMaterial({
-	map: loader7.load('../img/nike.jpg'),
+	map: loader7.load('./img/nike.jpg'),
 
 	}),
 	new THREE.MeshPhongMaterial({
-	map: loader7.load('../img/nike.jpg'),
+	map: loader7.load('./img/nike.jpg'),
 	bumpMap: normalTexture6,
 	bumpScale: 10
 	}),
 	new THREE.MeshPhongMaterial({
-	map: loader7.load('../img/jordan.jpg'),
+	map: loader7.load('./img/jordan.jpg'),
 	bumpMap: normalTexture6,
 	bumpScale: 10
 	}),
 	new THREE.MeshPhongMaterial({
-	map: loader7.load('../img/mc.jpeg'),
+	map: loader7.load('./img/mc.jpeg'),
 	bumpMap: normalTexture6,
 	bumpScale: 10
 	}),
 	new THREE.MeshPhongMaterial({
-	map: loader7.load('../img/juve.jpeg'),
+	map: loader7.load('./img/juve.jpeg'),
 	bumpMap: normalTexture6,
 	bumpScale: 10
 	}),
 	new THREE.MeshPhongMaterial({
-	map: loader7.load('../img/jordan.jpg'),
+	map: loader7.load('./img/jordan.jpg'),
 	bumpMap: normalTexture6,
 	bumpScale: 10
 	})
@@ -419,7 +419,7 @@ function init() {
 
 	cliff = new THREE.Object3D();
 
-	loader.load('../models/caution/scene.gltf', function ( gltf ) {
+	loader.load('./models/caution/scene.gltf', function ( gltf ) {
 
 	gltf.scene.traverse( function ( object ) {
 
@@ -441,7 +441,7 @@ function init() {
 
 	cliff2 = new THREE.Object3D();
 
-	loader.load('../models/caution/scene.gltf', function ( gltf ) {
+	loader.load('./models/caution/scene.gltf', function ( gltf ) {
 
 	gltf.scene.traverse( function ( object ) {
 
@@ -466,10 +466,10 @@ function init() {
 	/*const geometry11 = new THREE.BoxGeometry( 10, 10,10);
 	const material11 = new THREE.MeshPhongMaterial( { color: 0xffffff} );
 	const sphere = new THREE.Mesh( geometry11, material11 );
-	const texture11 = new THREE.TextureLoader().load('../img/index.jpg')
+	const texture11 = new THREE.TextureLoader().load('./img/index.jpg')
 	material11.map = texture11
 	const normalTexture11 = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	material11.bumpMap = normalTexture11
 	material11.bumpScale = 10;
@@ -491,7 +491,7 @@ function init() {
 
 	cone = new THREE.Object3D();
 	const loader4 = new GLTFLoader();
-	loader.load( '../models/traffic_cone/scene.gltf', function ( gltf ) {
+	loader.load( './models/traffic_cone/scene.gltf', function ( gltf ) {
 
 	gltf.scene.traverse( function ( object ) {
 
@@ -608,11 +608,11 @@ function init() {
 
 	const material = new THREE.MeshPhongMaterial()
 
-	const texture = new THREE.TextureLoader().load('../img/amazon.jpg')
+	const texture = new THREE.TextureLoader().load('./img/amazon.jpg')
 	material.map = texture
 
 	const normalTexture = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	material.bumpMap = normalTexture
 	material.bumpScale = 10;
@@ -633,22 +633,22 @@ function init() {
 	const loaderADV = new THREE.TextureLoader();
 	var materialsADV = [
 	new THREE.MeshLambertMaterial({
-	map: loaderADV.load('../img/amazon.jpg')
+	map: loaderADV.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV.load('../img/amazon.jpg')
+	map: loaderADV.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV.load('../img/amazon.jpg')
+	map: loaderADV.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV.load('../img/amazon.jpg')
+	map: loaderADV.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV.load('../img/amazon.jpg')
+	map: loaderADV.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV.load('../img/amazon.jpg')
+	map: loaderADV.load('./img/amazon.jpg')
 	})
 	];
 
@@ -665,22 +665,22 @@ function init() {
 	/*const loaderADV2 = new THREE.TextureLoader();
 	var materialsADV2 = [
 	new THREE.MeshLambertMaterial({
-	map: loaderADV2.load('../img/amazon.jpg')
+	map: loaderADV2.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV2.load('../img/amazon.jpg')
+	map: loaderADV2.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV2.load('../img/amazon.jpg')
+	map: loaderADV2.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV2.load('../img/amazon.jpg')
+	map: loaderADV2.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV2.load('../img/amazon.jpg')
+	map: loaderADV2.load('./img/amazon.jpg')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV2.load('../img/amazon.jpg')
+	map: loaderADV2.load('./img/amazon.jpg')
 	})
 	];
 
@@ -697,11 +697,11 @@ function init() {
 
 	const material1 = new THREE.MeshPhongMaterial()
 
-	const texture1 = new THREE.TextureLoader().load('../img/amazon.jpg')
+	const texture1 = new THREE.TextureLoader().load('./img/amazon.jpg')
 	material1.map = texture1
 
 	const normalTexture1 = new THREE.TextureLoader().load(
-	'../img/normal_4.png'
+	'./img/normal_4.png'
 	)
 	material1.normalMap = normalTexture1
 	material1.normalScale.set(10,10)
@@ -718,22 +718,22 @@ function init() {
 	const loaderADV3 = new THREE.TextureLoader();
 	var materialsADV3 = [
 	new THREE.MeshLambertMaterial({
-	map: loaderADV3.load('../img/slogan.png')
+	map: loaderADV3.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV3.load('../img/slogan.png')
+	map: loaderADV3.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV3.load('../img/slogan.png')
+	map: loaderADV3.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV3.load('../img/slogan.png')
+	map: loaderADV3.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV3.load('../img/slogan.png')
+	map: loaderADV3.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV3.load('../img/slogan.png')
+	map: loaderADV3.load('./img/slogan.png')
 	})
 	];
 
@@ -749,22 +749,22 @@ function init() {
 	const loaderADV4 = new THREE.TextureLoader();
 	var materialsADV4 = [
 	new THREE.MeshLambertMaterial({
-	map: loaderADV4.load('../img/slogan.png')
+	map: loaderADV4.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV4.load('../img/slogan.png')
+	map: loaderADV4.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV4.load('../img/slogan.png')
+	map: loaderADV4.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV4.load('../img/slogan.png')
+	map: loaderADV4.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV4.load('../img/slogan.png')
+	map: loaderADV4.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV4.load('../img/slogan.png')
+	map: loaderADV4.load('./img/slogan.png')
 	})
 	];
 
@@ -780,22 +780,22 @@ function init() {
 	const loaderADV5 = new THREE.TextureLoader();
 	var materialsADV5 = [
 	new THREE.MeshLambertMaterial({
-	map: loaderADV5.load('../img/slogan.png')
+	map: loaderADV5.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV5.load('../img/slogan.png')
+	map: loaderADV5.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV5.load('../img/slogan.png')
+	map: loaderADV5.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV5.load('../img/slogan.png')
+	map: loaderADV5.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV5.load('../img/slogan.png')
+	map: loaderADV5.load('./img/slogan.png')
 	}),
 	new THREE.MeshLambertMaterial({
-	map: loaderADV5.load('../img/slogan.png')
+	map: loaderADV5.load('./img/slogan.png')
 	})
 	];
 
@@ -820,7 +820,7 @@ function init() {
 	modelMesh5 = new THREE.Object3D();
 
 	const loader2 = new GLTFLoader();
-	loader.load( '../models/scene.gltf', function ( gltf ) {
+	loader.load( './models/scene.gltf', function ( gltf ) {
 
 		gltf.scene.traverse( function ( object ) {
 
@@ -848,7 +848,7 @@ function init() {
 	/************END PLAYER ***********/
 	/************KEEPER ***********/
 	const loaderKeeper = new GLTFLoader();
-	loaderKeeper.load( '../models/scene.gltf', function ( gltf ) {
+	loaderKeeper.load( './models/scene.gltf', function ( gltf ) {
 
 		gltf.scene.traverse( function ( object ) {
 
@@ -879,7 +879,7 @@ function init() {
 	modelMesh1 = new THREE.Object3D();
 
 	const loaderNext = new GLTFLoader();
-	loaderNext.load( '../models/scene.gltf', function ( gltf ) {
+	loaderNext.load( './models/scene.gltf', function ( gltf ) {
 
 	gltf.scene.traverse( function ( object ) {
 
