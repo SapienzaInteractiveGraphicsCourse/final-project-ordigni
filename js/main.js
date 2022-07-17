@@ -295,6 +295,24 @@
 			model.traverse ( o => {
 				if ( o.isMesh ){
 					o.material.color.setHex(0xff0095);
+
+					if(o.name=="Object_7") o.material.color.setHex(0xff47b5);   //booty
+					//if(o.name=="Object_8") o.material.color.setHex(0xff47b5);   //head
+					//if(o.name=="Object_9") o.material.color.setHex(0xff47b5);   //neck
+					if(o.name=="Object_10") o.material.color.setHex(0xff47b5);   //chest
+					if(o.name=="Object_11") o.material.color.setHex(0xff47b5);   //spina
+					if(o.name=="Object_12") o.material.color.setHex(0xff47b5);   //anca
+					if(o.name=="Object_13") o.material.color.setHex(0xff47b5);   //gamba
+					if(o.name=="Object_16") o.material.color.setHex(0xff47b5);   //foot
+					if(o.name=="Object_17") o.material.color.setHex(0xff47b5);   //spalla
+					if(o.name=="Object_18") o.material.color.setHex(0xff47b5);   //arm upper
+					if(o.name=="Object_22") o.material.color.setHex(0xff47b5);   //spalla
+					if(o.name=="Object_23") o.material.color.setHex(0xff47b5);   //upperarm
+					if(o.name=="Object_27") o.material.color.setHex(0xff47b5);   //anca
+					if(o.name=="Object_28") o.material.color.setHex(0xff47b5);   //lg upper
+					if(o.name=="Object_31") o.material.color.setHex(0xff47b5);   //booty
+					if(o.name=="Object_21") o.material.color.setHex(0xff47b5); //hand
+					if(o.name=="Object_26") o.material.color.setHex(0xff47b5);
 				}
 			});
 		}
@@ -420,212 +438,18 @@
 				
 			
 		}
-		function keeper(){
-			var coords4 = { r:-2.78, l: 2.78, j:0,hx:0,
-				rl:-3.04, ll:3.04, lxr:-0.16,lxl:-0.16,llxr:-0.16,llxl:-0.16,
-				fr:-0.1,fl:0.1,fxr: -1,fxl: -1,fly:0,fry:0 } // Start at (0, 0)
-
-				
-				var tweenkeep = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
-				.to({ r: -0.38, l: 0.38 ,j: 0,hx:0,
-					rl: -2.84, ll: 2.84,lxr:0.6,lxl:0.6,llxr:1.0,llxl:1.0,
-				fr:-0.3,fl:0.3,fxr: -1.4,fxl: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
-				.delay(300)
-				.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
-				.onUpdate(function() { // Called after tween.js updates 'coords3'.
-					// Move 'box' to the position described by 'coords3' with a CSS translation.
-						armR.rotation.z= coords4.r;
-						armL.rotation.z= coords4.l;
-						legR.rotation.z= coords4.rl;
-						legL.rotation.z= coords4.ll;
-						legL.rotation.x= coords4.lxl;
-						legR.rotation.x= coords4.lxr;
-						LlegR.rotation.x=coords4.llxr;
-						LlegL.rotation.x=coords4.llxl;
-						footR.rotation.z=coords4.fr;
-						footL.rotation.z=coords4.fl;
-						footR.rotation.x=coords4.fxr;
-						footL.rotation.x=coords4.fxl;
-						footR.rotation.y=coords4.fry;
-						footL.rotation.y=coords4.fly;
-						root.position.y-=0.015;
-						//console.log(coords3.x);
-					})
-				// Start the tween immediately.
-			
-			
-				
-				var tween2k = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords4'.
-				.to({ r: -0.38, l: 0.38 ,j: 0,hx:0.4,
-					rl: -2.60, ll: 2.60, lxr:0.2,lxl:0.6,llxr:0.5,llxl:1.2,
-				fr:-0.3,fl:0.3,fxr: -1.4,fxl: -1.6,fly:-0.15,fry:0.15 }, 900) // Move to (300, 200) in 1 second.
-				.delay(300)
-				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
-				.onUpdate(function() { // Called after tween.js updates 'coords4'.
-					// Move 'box' to the position described by 'coords4' with a CSS translation.
-						armR.rotation.z= coords4.r;
-						armL.rotation.z= coords4.l;
-						chest.rotation.z= coords4.hx;
-						root.position.y= coords4.j;
-						legR.rotation.z= coords4.rl;
-						legL.rotation.z= coords4.ll;
-						legL.rotation.x= coords4.lxl;
-						legR.rotation.x= coords4.lxr;
-						LlegR.rotation.x=coords4.llxr;
-						LlegL.rotation.x=coords4.llxl;
-						footR.rotation.z=coords4.fr;
-						footL.rotation.z=coords4.fl;
-						footR.rotation.x=coords4.fxr;
-						footL.rotation.x=coords4.fxl;
-						footR.rotation.y=coords4.fry;
-						footL.rotation.y=coords4.fly;
-						//root.rotation.z+=0.001;
-						//console.log(coords4.x);
-					})
-				
-
-				
-				var tween3k = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords4'.
-				.to({ r: -0.38, l: 0.38 ,j: 0,hx:0.4,
-					rl: -2.60, ll: 2.60, lxr:0.2,lxl:0.8,llxr:0.5,llxl:1.2,
-				fr:-0.3,fl:0.3,fxr: -1.0,fxl: -1.0,fly:-0.15,fry:0.15 }, 200) // Move to (300, 200) in 1 second.
-				.delay(0)
-				.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
-				.onUpdate(function() { // Called after tween.js updates 'coords4'.
-					// Move 'box' to the position described by 'coords4' with a CSS translation.
-						armR.rotation.z= coords4.r;
-						armL.rotation.z= coords4.l;
-						root.position.y= coords4.j;
-						legR.rotation.z= coords4.rl;
-						legR.rotation.x= coords4.lxr;
-						legL.rotation.z= coords4.ll;
-						legL.rotation.x= coords4.lxl;
-						LlegR.rotation.x=coords4.llxr;
-						LlegL.rotation.x=coords4.llxl;
-						footR.rotation.z=coords4.fr;
-						footL.rotation.z=coords4.fl;
-						footR.rotation.x=coords4.fxr;
-						footL.rotation.x=coords4.fxl;
-						footR.rotation.y=coords4.fry;
-						footL.rotation.y=coords4.fly;
-						root.position.y+=0.01;
-						
-						//console.log(coords4.x);
-					})
-				
-
-				
-				var tween4k = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords4'.
-				.to({ r: -0.38, l: 0.38 ,j: 0,hx:0.4,
-					rl:-3.04, ll:3.04, lxr:-0.16,lxl:-0.16,llxr:-0.16,llxl:-0.16,
-				fr:-0.3,fl:0.3,fxr: -0.5,fxl: -0.5,fly:-0.15,fry:0.15 }, 200) // Move to (300, 200) in 1 second.
-				.delay(0)
-				.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
-				.onUpdate(function() { // Called after tween.js updates 'coords4'.
-					// Move 'box' to the position described by 'coords4' with a CSS translation.
-					armR.rotation.z= coords4.r;
-					armL.rotation.z= coords4.l;
-					root.position.y= coords4.j;
-					legR.rotation.z= coords4.rl;
-					legR.rotation.x= coords4.lxr;
-					legL.rotation.z= coords4.ll;
-					legL.rotation.x= coords4.lxl;
-					LlegR.rotation.x=coords4.llxr;
-					LlegL.rotation.x=coords4.llxl;
-					footR.rotation.z=coords4.fr;
-					footL.rotation.z=coords4.fl;
-					footR.rotation.x=coords4.fxr;
-					footL.rotation.x=coords4.fxl;
-					footR.rotation.y=coords4.fry;
-					footL.rotation.y=coords4.fly;
-					root.position.y+=0.07;
-					root.position.z+=0.035;
-					root.rotation.z+=0.03;
-						//console.log(coords2.x);
-					})
-
-					var tween5k = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords4'.
-					.to({ r: -0.38, l: 0.38 ,j: 0,hx:-0.1,
-						rl:-3.04, ll:3.65 , lxr:-0.16,lxl:-0.16,llxr:-0.16,llxl:-0.16,
-					fr:-0.3,fl:0.3,fxr: -0.5,fxl: -0.5,fly:-0.15,fry:0.15 }, 200) // Move to (300, 00) in 1 second.
-					.delay(0)
-					.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
-					.onUpdate(function() { // Called after tween.js updates 'coords4'.
-						// Move 'box' to the position described by 'coords4' with a CSS translation.
-						armR.rotation.z= coords4.r;
-						armL.rotation.z= coords4.l;
-						root.position.y= coords4.j
-						chest.rotation.z= coords4.hx;
-						legR.rotation.z= coords4.rl;
-						legR.rotation.x= coords4.lxr;
-						legL.rotation.z= coords4.ll;
-						legR.rotation.z= coords4.ll;
-						legL.rotation.x= coords4.lxl;
-						LlegR.rotation.x=coords4.llxr;
-						LlegL.rotation.x=coords4.llxl;
-						footR.rotation.z=coords4.fr;
-						footL.rotation.z=coords4.fl;
-						footR.rotation.x=coords4.fxr;
-						footL.rotation.x=coords4.fxl;
-						footR.rotation.y=coords4.fry;
-						footL.rotation.y=coords4.fly;
-						root.position.y-=0.1;
-						root.position.z+=0.035;
-						root.rotation.z+=0.03;
-							//console.log(coords2.x);
-						})
-					var tween6k = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords4'.
-					.to({ r: -0.38, l: 0.38 ,j: 0,hx:0,
-						rl:-3.04, ll:3.7 , lxr:-0.16,lxl:-0.16,llxr:-0.16,llxl:-0.16,
-					fr:-0.3,fl:0.3,fxr: -0.5,fxl: -0.5,fly:-0.15,fry:0.15 }, 100) // Move to (300, 200) in 1 second.
-					.delay(0)
-					.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
-					.onUpdate(function() { // Called after tween.js updates 'coords4'.
-						// Move 'box' to the position described by 'coords4' with a CSS translation.
-						root.position.y+=0.1;
-						chest.rotation.z= coords4.hx;
-						legL.rotation.z= coords4.ll;
-						legR.rotation.z= coords4.ll;
-							//console.log(coords2.x);
-						})
-
-					var tween7k = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords4'.
-					.to({ r: -0.38, l: 0.38 ,j: 0,hx:0.4,
-						rl:-3.04, ll:3.5 , lxr:-0.16,lxl:-0.16,llxr:-0.16,llxl:-0.16,
-					fr:-0.3,fl:0.3,fxr: -0.5,fxl: -0.5,fly:-0.15,fry:0.15 }, 100) // Move to (300, 200) in 1 second.
-					.delay(0)
-					.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
-					.onUpdate(function() { // Called after tween.js updates 'coords4'.
-						// Move 'box' to the position described by 'coords4' with a CSS translation.
-						root.position.y-=0.1;
-						legL.rotation.z= coords4.ll;
-						legR.rotation.z= coords4.ll;
-							//console.log(coords2.x);
-						})
-
-				tweenkeep.onComplete(()=>{tween2k.start();});		
-				tween2k.onComplete(()=>{tween3k.start();});	
-				tween3k.onComplete(()=>{tween4k.start();});	
-				tween4k.onComplete(()=>{tween5k.start();});	
-				tween5k.onComplete(()=>{tween6k.start();});	
-				tween6k.onComplete(()=>{tween7k.start();});	
-				tween7k.onComplete(()=>{console.log(root.position.z,root.position.y,root.rotation.z)});	
-				tweenkeep.start();
-				
-			
-		}
-
+	
 		function run(){
 			
 			coords = { r:-2.78, l: 2.78, j:0,hx:0,
 				rl: -2.84, ll: 2.84, lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-				fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15} // Start at (0, 0)
+				fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15} // Start at (0, 0)
 
 				
 				var tween = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 				.to({r:-0.78, l: 2.78 ,j: 0, hx:0.5,
 					rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-					fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+					fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
 				.delay(0)
 				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
 				.onUpdate(function() { // Called after tween.js updates 'coords'.
@@ -649,7 +473,7 @@
 				var tween2 = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 				.to({r:-0.38, l: 2.58 ,j: 0, hx:0.7,
 					rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-					fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15}, 400) // Move to (300, 200) in 1 second.
+					fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15}, 400) // Move to (300, 200) in 1 second.
 				.delay(0)
 				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
 				.onUpdate(function() { // Called after tween.js updates 'coords'.
@@ -674,7 +498,7 @@
 				var tween3 = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 				.to({r:-2.78, l: 2.78, j:0,hx:0,
 					rl: -2.84, ll: 2.84, lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-					fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15}, 400) // Move to (300, 200) in 1 second.
+					fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15}, 400) // Move to (300, 200) in 1 second.
 				.delay(500)
 				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
 				.onUpdate(function() { // Called after tween.js updates 'coords'.
@@ -698,7 +522,7 @@
 				var tween4 = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 				.to({r:-2.78, l: 0.78 ,j: 0, hx:-0.5,
 					rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-					fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15  }, 400) // Move to (300, 200) in 1 second.
+					fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15  }, 400) // Move to (300, 200) in 1 second.
 				.delay(0)
 				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
 				.onUpdate(function() { // Called after tween.js updates 'coords'.
@@ -723,7 +547,7 @@
 				var tween5 = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 				.to({r:-2.58, l: 0.38 ,j: 0, hx:-0.7,
 					rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-					fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+					fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
 				.delay(0)
 				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
 				.onUpdate(function() { // Called after tween.js updates 'coords'.
@@ -747,7 +571,7 @@
 					var tween6 = new TWEEN.Tween(coords) // Create a new tween that modifies 'coords'.
 				.to({r:-2.78, l: 2.78, j:0,hx:0,
 					rl: -2.84, ll: 2.84, lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
-					fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+					fr:-0.3,fl:0.3,fx: -1.1,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
 				.delay(500)
 				.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
 				.onUpdate(function() { // Called after tween.js updates 'coords'.

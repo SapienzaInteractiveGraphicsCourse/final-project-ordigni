@@ -40,6 +40,7 @@ var d3=-54;
 var dtemp;
 var scoreKeeper=0;
 var scorePlayer1 =0;
+var lamb;
 
 var armR;
 var armL;
@@ -145,6 +146,7 @@ function init() {
 
 	getParams();
 
+	window.setTimeout(function(){document.getElementById('loading').style.display = 'none'},5000)
 	const panel = new GUI( { width: 310 } );
 	panel.title('Score')
 	settings = {
@@ -826,8 +828,6 @@ function init() {
 
 			if ( object.isMesh ){
 				object.castShadow = true;
-				if(colorP==1) object.material.color.setHex(0x20a92d);
-				if(colorP==2) object.material.color.setHex(0x2271b3);
 				objects.push(object);
 			}
 
@@ -840,8 +840,32 @@ function init() {
 		modelMesh5.position.z= -108.2;
 		modelMesh5.position.x= -39;
 		modelMesh5.rotation.y=-20.4;
+		if(colorP==1) changeColorP(modelMesh5,1)
+		if(colorP==2) changeColorP(modelMesh5,2)
 		scene.add( modelMesh5);
 		getPartiDelCorpo(modelMesh5);
+
+	} );
+	const loader3 = new GLTFLoader();
+	var model3 = new THREE.Object3D();
+
+	loader3.load( './models/lowpoly_lamborghini_aventador/scene.gltf', function ( gltf ) {
+
+		gltf.scene.traverse( function ( object ) {
+
+			if ( object.isMesh ) { object.castShadow = true;
+				object.material.color.setHex(0xffffff );
+			}
+			} );
+
+			model3 = gltf.scene;
+			model3.position.y= -9.50;
+			model3.position.z= -200.2;
+			model3.position.x= 100;
+			model3.scale.set(0.05,0.05,0.05)
+			getPartiDelCorpo4(model3);
+			scene.add( model3);
+			car();
 
 	} );
 
@@ -854,8 +878,8 @@ function init() {
 
 			if ( object.isMesh ){
 				object.castShadow = true;
-				if(colorK==2) object.material.color.setHex(0xe71837);
-				if(colorK==2) object.material.color.setHex(0xf400a1 );
+			
+				//if(colorK==4) object.material.color.setHex(0xf400a1 );
 				objects.push(object);
 			}
 
@@ -869,6 +893,8 @@ function init() {
 		modelKeeper.position.z= -108.2;
 		modelKeeper.position.x= 66.0;
 		modelKeeper.rotation.y=20.4;
+		if(colorK==3) changeColorK(modelKeeper,3);
+		if(colorK==4) changeColorK(modelKeeper,4);
 		scene.add( modelKeeper);
 		getPartiDelCorpo2(modelKeeper);
 
@@ -1077,6 +1103,17 @@ function getPartiDelCorpo3(model){
 	footR3 = o;
 	}
 
+	} );
+}
+
+function getPartiDelCorpo4(model3){
+								
+	model3.traverse ( o => {
+		// Reference the neck and waist bones
+		if ( o.name === 'Plane') { 
+			lamb = o;
+		}
+		
 	} );
 }
 /*
@@ -1934,7 +1971,7 @@ function kicking(n){
 
 
 	})
-	if(n==1){
+	if(n==0){
 	tween76 = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords2'.
 	.to({ lar:-1.5,lal:-0.9,al:-1.3,ar:0.1,arz:0.2,bx:64.93,by:-8.55,bz:-100.02,
 		llr:0.5,lll:0.8,ll:1.0,lr:0.9,rf:-0.6,hx: 5,llrz:0.01,lf:-0.9,ball:1},800) // Move to (300, 200) in 1 second.
@@ -1956,7 +1993,7 @@ function kicking(n){
 
 	}
 
-	if(n==2){
+	if(n==1){
 	tween76 = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords2'.
 	.to({ lar:-1.5,lal:-0.9,al:-1.3,ar:0.1,arz:0.2,bx:70,by:-2.30,bz:-102.02,
 		llr:0.5,lll:0.8,ll:1.0,lr:0.9,rf:-0.6,hx: 5,llrz:0.01,lf:-0.9,ball:1},800) // Move to (300, 200) in 1 second.
@@ -1978,7 +2015,7 @@ function kicking(n){
 
 	}
 
-	if(n==3){
+	if(n==2){
 	tween76 = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords2'.
 	.to({ lar:-1.5,lal:-0.9,al:-1.3,ar:0.1,arz:0.2,bx:70,by:-2.30,bz:-112.02,
 		llr:0.5,lll:0.8,ll:1.0,lr:0.9,rf:-0.6,hx: 5,llrz:0.01,lf:-0.9,ball:1},800) // Move to (300, 200) in 1 second.
@@ -2000,7 +2037,7 @@ function kicking(n){
 
 	}
 
-	if(n==4){
+	if(n==3){
 	tween76 = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords2'.
 	.to({ lar:-1.5,lal:-0.9,al:-1.3,ar:0.1,arz:0.2,bx:64.93,by:-8.55,bz:-115.02,
 		llr:0.5,lll:0.8,ll:1.0,lr:0.9,rf:-0.6,hx: 5,llrz:0.01,lf:-0.9,ball:1},800) // Move to (300, 200) in 1 second.
@@ -3032,33 +3069,36 @@ function downPress(event) {
 	break;
 
 	case 75:
+		console.log("k")
 	if(frontPort){
+		console.log("k")
 		frontPort=false;
 		var rand=Math.floor(Math.random() * 4);
-		if(rand==1){
-		kicking(1);
+		console.log(rand)
+		if(rand==0){
+		kicking(0);
 		keeper1();
 		scoreKeeper+=1;
 		updateScore()
 		window.setTimeout(function(){window.location.href="game.html?keep=true"},3000)
 		}
-		if(rand==2){
-		kicking(2);
+		if(rand==1){
+		kicking(1);
 		keeper1();
 		scorePlayer1+=1;
 		updateScore()
 		window.setTimeout(function(){window.location.href="game.html?goal=true"},3000)
 		}
-		if(rand==3){
+		if(rand==2){
 		scorePlayer1=1;
-		kicking(3);
+		kicking(2);
 		keeper2();
 		updateScore()
 		window.setTimeout(function(){window.location.href="game.html?goal=true"},3000)
 		}
-		if(rand==4){
+		if(rand==3){
 		scoreKeeper+=1;
-		kicking(4);
+		kicking(3);
 		keeper2();
 		updateScore()
 		window.setTimeout(function(){window.location.href="game.html?keep=true"},3000)
@@ -3154,6 +3194,30 @@ function hit(){
 	}
 }
 
+function car(){
+			
+	var coordsc = {x:77}; // Start at (0, 0)
+
+
+	console.log("a"+lamb.position.x);
+	var tween10c = new TWEEN.Tween(coordsc) // Create a new tween that modifies 'coords'.
+	.to({x:-4000}, 10000) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+		// Move 'box' to the position described by 'coords' with a CSS translation.
+		
+		lamb.position.x= coordsc.x;
+		//lamb.rotation.z += 0.01;
+			
+		})
+
+	
+		window.setTimeout(function(){tween10c.start();},3000);
+	
+
+}
+
 
 function verifyKick(){
 	if(modelMesh5.position.x>30) {
@@ -3181,6 +3245,108 @@ function getParams(){
 	console.log(time,colorK,colorP,mode);
 }
 
+function changeColorK(model,n){
+								
+	model.traverse ( o => {
+		if ( o.isMesh ){
+			if(n==3){
+				o.material.color.setHex(0xffffff);
+
+				if(o.name=="Object_7") o.material.color.setHex(0xff0000);   //booty
+				//if(o.name=="Object_8") o.material.color.setHex(0xff0000);   //head
+				//if(o.name=="Object_9") o.material.color.setHex(0xff0000);   //neck
+				if(o.name=="Object_10") o.material.color.setHex(0xff0000);   //chest
+				if(o.name=="Object_11") o.material.color.setHex(0xff0000);   //spina
+				if(o.name=="Object_12") o.material.color.setHex(0xff0000);   //anca
+				if(o.name=="Object_13") o.material.color.setHex(0xff0000);   //gamba
+				if(o.name=="Object_16") o.material.color.setHex(0xff0000);   //foot
+				if(o.name=="Object_17") o.material.color.setHex(0xff0000);   //spalla
+				if(o.name=="Object_18") o.material.color.setHex(0xff0000);   //arm upper
+				if(o.name=="Object_22") o.material.color.setHex(0xff0000);   //spalla
+				if(o.name=="Object_23") o.material.color.setHex(0xff0000);   //upperarm
+				if(o.name=="Object_27") o.material.color.setHex(0xff0000);   //anca
+				if(o.name=="Object_28") o.material.color.setHex(0xff0000);   //lg upper
+				if(o.name=="Object_31") o.material.color.setHex(0xff0000);   //booty
+				if(o.name=="Object_21") o.material.color.setHex(0xff0000); //hand
+				if(o.name=="Object_26") o.material.color.setHex(0xff0000);
+			}
+
+			if(n==4){
+				o.material.color.setHex(0xffffff);
+
+				if(o.name=="Object_7") o.material.color.setHex(0xff0090);   //booty
+				//if(o.name=="Object_8") o.material.color.setHex(0xff0090);   //head
+				//if(o.name=="Object_9") o.material.color.setHex(0xff0090);   //neck
+				if(o.name=="Object_10") o.material.color.setHex(0xff0090);   //chest
+				if(o.name=="Object_11") o.material.color.setHex(0xff0090);   //spina
+				if(o.name=="Object_12") o.material.color.setHex(0xff0090);   //anca
+				if(o.name=="Object_13") o.material.color.setHex(0xff0090);   //gamba
+				if(o.name=="Object_16") o.material.color.setHex(0xff0090);   //foot
+				if(o.name=="Object_17") o.material.color.setHex(0xff0090);   //spalla
+				if(o.name=="Object_18") o.material.color.setHex(0xff0090);   //arm upper
+				if(o.name=="Object_22") o.material.color.setHex(0xff0090);   //spalla
+				if(o.name=="Object_23") o.material.color.setHex(0xff0090);   //upperarm
+				if(o.name=="Object_27") o.material.color.setHex(0xff0090);   //anca
+				if(o.name=="Object_28") o.material.color.setHex(0xff0090);   //lg upper
+				if(o.name=="Object_31") o.material.color.setHex(0xff0090);   //booty
+				if(o.name=="Object_21") o.material.color.setHex(0xff0090); //hand
+				if(o.name=="Object_26") o.material.color.setHex(0xff0090);
+			}
+		}
+	});
+}
+
+
+function changeColorP(model,n){
+								
+	model.traverse ( o => {
+		if ( o.isMesh ){
+			if(n==1){
+				o.material.color.setHex(0x005a0c);  
+
+				if(o.name=="Object_7") o.material.color.setHex(0x20a92d);   //booty
+				//if(o.name=="Object_8") o.material.color.setHex(0x0022ff);   //head
+				//if(o.name=="Object_9") o.material.color.setHex(0x0022ff);   //neck
+				if(o.name=="Object_10") o.material.color.setHex(0x20a92d);   //chest
+				if(o.name=="Object_11") o.material.color.setHex(0x20a92d);   //spina
+				if(o.name=="Object_12") o.material.color.setHex(0x20a92d);   //anca
+				if(o.name=="Object_13") o.material.color.setHex(0x20a92d);   //gamba
+				if(o.name=="Object_16") o.material.color.setHex(0x20a92d);   //foot
+				if(o.name=="Object_17") o.material.color.setHex(0x20a92d);   //spalla
+				if(o.name=="Object_18") o.material.color.setHex(0x20a92d);   //arm upper
+				if(o.name=="Object_22") o.material.color.setHex(0x20a92d);   //spalla
+				if(o.name=="Object_23") o.material.color.setHex(0x20a92d);   //upperarm
+				if(o.name=="Object_27") o.material.color.setHex(0x20a92d);   //anca
+				if(o.name=="Object_28") o.material.color.setHex(0x20a92d);   //lg upper
+				if(o.name=="Object_31") o.material.color.setHex(0x20a92d);   //booty
+
+			}
+
+			if(n==2){
+				o.material.color.setHex(0x0022ff);  
+
+				if(o.name=="Object_7") o.material.color.setHex(0x2271b3);   //booty
+				//if(o.name=="Object_8") o.material.color.setHex(0x2271b3);   //head
+				//if(o.name=="Object_9") o.material.color.setHex(0x2271b3);   //neck
+				if(o.name=="Object_10") o.material.color.setHex(0x2271b3);   //chest
+				if(o.name=="Object_11") o.material.color.setHex(0x2271b3);   //spina
+				if(o.name=="Object_12") o.material.color.setHex(0x2271b3);   //anca
+				if(o.name=="Object_13") o.material.color.setHex(0x2271b3);   //gamba
+				if(o.name=="Object_16") o.material.color.setHex(0x2271b3);   //foot
+				if(o.name=="Object_17") o.material.color.setHex(0x2271b3);   //spalla
+				if(o.name=="Object_18") o.material.color.setHex(0x2271b3);   //arm upper
+				if(o.name=="Object_22") o.material.color.setHex(0x2271b3);   //spalla
+				if(o.name=="Object_23") o.material.color.setHex(0x2271b3);   //upperarm
+				if(o.name=="Object_27") o.material.color.setHex(0x2271b3);   //anca
+				if(o.name=="Object_28") o.material.color.setHex(0x2271b3);   //lg upper
+				if(o.name=="Object_31") o.material.color.setHex(0x2271b3);   //booty
+
+			}
+			
+		}
+
+	});
+}
 
 
 
