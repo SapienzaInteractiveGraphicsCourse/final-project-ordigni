@@ -20,7 +20,6 @@ body {
   pointer-events: none;
 }
 #content {
-  font-size: 7vw;
   text-align: center;
   width: 100vw;
   height: 100vh;
@@ -43,6 +42,7 @@ body {
   transition-duration: 0.4s;
   cursor: pointer;
 }
+
 
 .button1 {
   background-color: white; 
@@ -199,5 +199,4 @@ body {
 .menu > li:hover .submenu li:nth-child(odd){
   transform: skewX(-25deg) translateX(-15px);			
 }
-
 
