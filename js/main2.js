@@ -147,7 +147,7 @@ function init() {
 
 	getParams();
 
-	window.setTimeout(function(){document.getElementById('load').style.display = 'none'},5000)
+	window.setTimeout(function(){document.getElementById('load').style.display = 'none'},8000)
 	const panel = new GUI( { width: 310 } );
 	panel.title('Score')
 	settings = {
@@ -184,7 +184,6 @@ function init() {
 
 	
 	if(mode==1){
-		console.log("a")
 		if(time==3)  lux = new THREE.HemisphereLight( 0x252850,0x000000); //NOTTE
 		else if(time==1) lux = new THREE.HemisphereLight( 0xffffff,0x00000); 
 		else if(time==2)lux = new THREE.HemisphereLight( 0xff9d00,0xff0000); 
@@ -281,8 +280,8 @@ function init() {
 		modelball = gltf.scene;
 		modelball.position.y= -8.55;
 		modelball.position.z= -107.2;
-		modelball.position.x= 38.8;
-		modelball.scale.set(3.0,3.0,3.0)
+		modelball.position.x= 40.8;
+		modelball.scale.set(3.5,3.5,3.5)
 		modelball.material = new THREE.MeshPhongMaterial({emissive: 0xFFFAF0}); 
 		scene.add( modelball);
 
@@ -1367,7 +1366,6 @@ function run(){
 
 function readyToKick(){
 	frontPort=true;
-	console.log("OK"+frontPort)
 	var tweenk = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords'.
 	.to({ lar:-0.02,lal:-0.02,al:-0.08,ar:-0.08,arz:0.13,
 	llr:-0.11,lll:-0.11,ll:-0.16,lr:-0.16,rf:-0.95,hx: 0,llrz:-0.11,lf:-0.95},100) // Move to (300, 200) in 1 second.
@@ -1520,7 +1518,6 @@ function kicking(n){
 
 	//console.log(footL.rotation.x)
 	//console.log(legR.rotation.x)
-	console.log(modelMesh5.position.z);
 	tween11 = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords'.
 	.to({ lar:-0.8,lal:-1.2,al:-0.8,ar:0.5,arz:-0.4,bx:44.8,by:-8.55,bz:-107.2,
 	llr:1.1,lll:0.70,ll:0.50,lr:-0.2,rf:-1.3,hx:-0.4,llrz:-0.11,lf:-0.96},100) // Move to (300, 200) in 1 second.
@@ -2223,7 +2220,6 @@ function keeper1(){
 	var coords4 = { r:-2.78, l: 2.78, j:0,hx:0,lal:0,lar:0,lalx:0,larx:0,
 	rl:-3.04, ll:3.04, lxr:-0.16,lxl:-0.16,llxr:-0.16,llxl:-0.16,
 	fr:-0.1,fl:0.1,fxr: -1,fxl: -1,fly:0,fry:0,y:-8.55,z:-108.2,rz:0 } // Start at (0, 0)
-	console.log(modelKeeper.rotation.z)
 
 	var tweenkeep = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
 	.to({ r: -0.38, l: 0.38 ,j: 0,hx:0, lal:-1.2,lar:1.3,lalx:-0.3,larx:-0.2,
@@ -3023,7 +3019,6 @@ function play(){
 		model2.position.z= modelMesh5.position.z;
 		model2.position.x= modelMesh5.position.x;
 	}
-	console.log(modelMesh5.position.x);
 	verifyKick();
 
 
@@ -3091,12 +3086,9 @@ function downPress(event) {
 	break;
 
 	case 75:
-		console.log("k")
 	if(frontPort){
-		console.log("k")
 		frontPort=false;
 		var rand=Math.floor(Math.random() * 4);
-		console.log(rand)
 		if(rand==0){
 		kicking(0);
 		keeper1();
@@ -3136,10 +3128,8 @@ function downPress(event) {
 function updateScore(){
 	var SK= Number(JSON.parse(window.sessionStorage.getItem('ScoreKeeper'),10));
 	var SP= Number(JSON.parse(window.sessionStorage.getItem('ScorePlayer'),10));
-	console.log(SP)
 	SK+=scoreKeeper;
 	SP+=scorePlayer1;
-	console.log(SP,JSON.stringify(SP),SP.toString());
 	window.sessionStorage.setItem('ScoreKeeper', SK.toString());
 	window.sessionStorage.setItem('ScorePlayer', SP.toString());
 }
@@ -3188,11 +3178,8 @@ function verifyFieldRight(){
 
 function verifyHit(){
 	if(hit() && firstHit==false){
-	console.log("here")
-	console.log(scorePlayer1);
 	firstHit=true;
 	scorePlayer1-=2;
-	console.log(scorePlayer1);
 	updateScore();
 	window.location.href="game.html?fail=true";
 	}
@@ -3221,7 +3208,6 @@ function car(){
 	var coordsc = {x:77}; // Start at (0, 0)
 
 
-	console.log("a"+lamb.position.x);
 	var tween10c = new TWEEN.Tween(coordsc) // Create a new tween that modifies 'coords'.
 	.to({x:-4000}, 10000) // Move to (300, 200) in 1 second.
 	.delay(0)
@@ -3244,7 +3230,6 @@ function car(){
 function verifyKick(){
 	if(modelMesh5.position.x>30) {
 	tween7.onComplete(()=>{kick=true;frontPort=true;});
-	console.log(frontPort+"a");
 	readyToKick();
 	}
 }
@@ -3264,7 +3249,6 @@ function getParams(){
 	colorP = Number(JSON.parse(window.sessionStorage.getItem('ColorPlayer'),10));
 	mode = Number(JSON.parse(window.sessionStorage.getItem('Mode'),10));
 
-	console.log(time,colorK,colorP,mode);
 }
 
 function changeColorK(model,n){
