@@ -146,7 +146,7 @@ function init() {
 
 	getParams();
 
-	window.setTimeout(function(){document.getElementById('loading').style.display = 'none'},5000)
+	window.setTimeout(function(){document.getElementById('load').style.display = 'none'},5000)
 	const panel = new GUI( { width: 310 } );
 	panel.title('Score')
 	settings = {
