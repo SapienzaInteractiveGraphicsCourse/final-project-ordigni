@@ -908,7 +908,7 @@ function init() {
 	/*****************************END MODEL ******************************/
 
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
-	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setPixelRatio( devicePixelRatio );
 	renderer.setSize( window.innerWidth, window.innerHeight );
 	renderer.toneMapping = THREE.ACESFilmicToneMapping;
 	renderer.toneMappingExposure = 1;
@@ -935,9 +935,10 @@ function init() {
 	function onWindowResize() {
 
 	camera.aspect = window.innerWidth / window.innerHeight;
+	renderer.setSize( window.innerWidth, window.innerHeight );
 	camera.updateProjectionMatrix();
 
-	renderer.setSize( window.innerWidth, window.innerHeight );
+	
 
 }
 
@@ -1306,7 +1307,8 @@ function run(){
 
 
 function readyToKick(){
-	console.log("OK")
+	frontPort=true;
+	console.log("OK"+frontPort)
 	var tweenk = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords'.
 	.to({ lar:-0.02,lal:-0.02,al:-0.08,ar:-0.08,arz:0.13,
 	llr:-0.11,lll:-0.11,ll:-0.16,lr:-0.16,rf:-0.95,hx: 0,llrz:-0.11,lf:-0.95},100) // Move to (300, 200) in 1 second.
@@ -3155,8 +3157,8 @@ function hit(){
 
 function verifyKick(){
 	if(modelMesh5.position.x>30) {
-	tween7.onComplete(()=>{kick=true});
-	frontPort=true;
+	tween7.onComplete(()=>{kick=true;frontPort=true;});
+	console.log(frontPort+"a");
 	readyToKick();
 	}
 }

@@ -9,10 +9,6 @@
 
 			var modelMesh1;
 			var modelMesh2;
-			var modelMesh3;
-			var modelMesh4;
-			var modelMesh5;
-			var modelMesh6;
 			var armR;
 			var armL;
 			var root;
@@ -43,37 +39,16 @@
 			var scene;
 			var camera;
 			var scene1;
-			var scene2;
-			var animationStop;
-
-			var start1;
 
 			init();
 			animate();
 			//render();
 
-			function startPlay(){
-				scene = scene2;
-				//tween.stop();
-				//tween0.stop();
-				console.log("dome");
-				var c = document.getElementById("content");
-				c.innerHTML="";
-				scene.add( new THREE.AmbientLight(0xffffff, 0.5));
-				init();
-				
-			}
 
 
 			function init() {
 			
 				const canvas = document.querySelector('#c');
-
-				start1 = document.getElementById("start1");
-				start1.addEventListener('click', startPlay);
-				document.addEventListener( 'click', onPointerMove ); 
-
-
 
 				renderer = new THREE.WebGLRenderer({ 
 					canvas,
@@ -98,7 +73,6 @@
 				
 				scene1 = new THREE.Scene();
 				scene = scene1;
-				scene2 = new THREE.Scene();
 				
 			
 
@@ -107,7 +81,6 @@
 				
 				spotLight.intensity=1;
 				scene1.add( new THREE.AmbientLight(0xffffff, 0.5));
-				scene2.add( new THREE.AmbientLight(0xffffff, 0.5));
 				
 				const spotLight1 = new THREE.SpotLight( 0xffffff );
 				spotLight1.position.set(10,10,10);
@@ -116,7 +89,6 @@
 				spotLight1.intensity=1;
 
 				scene1.add(spotLight1);
-				scene2.add(spotLight1);
 				
 				const controls = new OrbitControls( camera, renderer.domElement );
 				//controls.addEventListener( 'change', render ); // use if there is no animation loop
@@ -132,24 +104,9 @@
 				renderer.outputEncoding = THREE.sRGBEncoding;
 
 				
-
-
-
-
-				/*const mesh = new THREE.Mesh( new THREE.PlaneGeometry( 200, 200 ), new THREE.MeshPhongMaterial( { color: 0x999999, depthWrite: false } ) );
-				mesh.rotation.x = - Math.PI / 2;
-				mesh.receiveShadow = true;
-				scene.add( mesh );*/
-
-
-				
 				modelMesh1 =  new THREE.Object3D();
 				modelMesh2 = new THREE.Object3D();
-				modelMesh3 =  new THREE.Object3D();
-				modelMesh4 = new THREE.Object3D();
-				modelMesh5 =  new THREE.Object3D();
-				modelMesh6 = new THREE.Object3D();
-				
+			
 				const loader = new GLTFLoader();
 				loader.load( './models/scene.gltf', function ( gltf ) {
 
@@ -159,67 +116,49 @@
 
 					} );
 						
-					modelMesh1 =  gltf.scene;
-					modelMesh2 = SkeletonUtils.clone( gltf.scene);
-					modelMesh3 = SkeletonUtils.clone( gltf.scene);
-					modelMesh4 = SkeletonUtils.clone( gltf.scene);
-					modelMesh5 = SkeletonUtils.clone( gltf.scene);
-					modelMesh6 = SkeletonUtils.clone( gltf.scene);
-					//const model2 = SkeletonUtils.clone( gltf.scene );
-					
-
+					modelMesh1 =  SkeletonUtils.clone(gltf.scene);
+				
 					modelMesh1.position.x =23;
 					modelMesh1.position.y= -15;
 					modelMesh1.position.z = 7;
 					modelMesh1.scale.set(1.8,1.8,1.1)
+			
+					scene1.add( modelMesh1);
+					scene1.scale.set(0.10,0.10,0.10)
 					
 
+					getPartiDelCorpo(modelMesh1);
+				
+					changeColor1(modelMesh1);
+					
+					
+					
 
+				} );
+
+				const loader2 = new GLTFLoader();
+				loader2.load( './models/scene.gltf', function ( gltf ) {
+
+					gltf.scene.traverse( function ( object ) {
+
+						if ( object.isMesh ) object.castShadow = true;
+
+					} );
+						
+					modelMesh2 = SkeletonUtils.clone( gltf.scene);
 					modelMesh2.position.x = -23;
 					modelMesh2.position.y= -15;
 					modelMesh2.position.z = 7;
 					modelMesh2.scale.set(1.8,1.8,1.1)
 
-					modelMesh3.position.x =23;
-					modelMesh3.position.y= -15;
-					modelMesh3.position.z = 7;
-					modelMesh3.scale.set(1.8,1.8,1.1)
-					
-
-
-					modelMesh4.position.x = -23;
-					modelMesh4.position.y= -15;
-					modelMesh4.position.z = 7;
-					modelMesh4.scale.set(1.8,1.8,1.1)
-
-					modelMesh5.position.x =8;
-					modelMesh5.position.y= -15;
-					modelMesh5.position.z = 7;
-					modelMesh5.scale.set(1.8,1.8,1.1)
-					
-
-
-					modelMesh6.position.x = -8;
-					modelMesh6.position.y= -15;
-					modelMesh6.position.z = 7;
-					modelMesh6.scale.set(1.8,1.8,1.1)
-	
-
-					scene1.add( modelMesh1);
 					scene1.add( modelMesh2);
-					scene2.add(modelMesh3);
-					scene2.add(modelMesh4);
-					scene2.add(modelMesh5);
-					scene2.add(modelMesh6);
-							
+				
 					
 					scene1.scale.set(0.10,0.10,0.10)
-					scene2.scale.set(0.10,0.10,0.10)
-					
 
-					getPartiDelCorpo(gltf.scene);
 					getPartiDelCorpo2(modelMesh2);
-					console.log(chest.rotation.z)
+
+					changeColor2(modelMesh2);
 					jumpingJack();
 					run();
 					
@@ -228,17 +167,7 @@
 
 				} );
 
-				const loader2 = new GLTFLoader();
-						loader.load( './models/field/scene.gltf', function ( gltf ) {
-
-							scene2.add( gltf.scene );
-
-
-						} );
-
-				
-
-				
+			
 				
 
 				window.addEventListener( 'resize', onWindowResize );
@@ -249,8 +178,7 @@
 					camera.updateProjectionMatrix();
 	
 					renderer.setSize( window.innerWidth, window.innerHeight );
-	
-					
+
 	
 				}
 
@@ -260,7 +188,6 @@
 		function getPartiDelCorpo(model){
 								
 			model.traverse ( o => {
-				console.log(o.name+": "+o.type);
 				// Reference the neck and waist bones
 				if ( o.name === 'armr_07') { 
 					armR = o;
@@ -300,7 +227,6 @@
 		function getPartiDelCorpo2(model){
 								
 			model.traverse ( o => {
-				console.log(o.name+": "+o.type);
 				// Reference the neck and waist bones
 				if ( o.name === 'armr_07') { 
 					armR2 = o;
@@ -336,6 +262,45 @@
 				
 			} );
 		}
+
+		function changeColor1(model){
+								
+			model.traverse ( o => {
+				if ( o.isMesh ){
+					o.material.color.setHex(0xfff200);  
+
+					if(o.name=="Object_7") o.material.color.setHex(0x0022ff);   //booty
+					//if(o.name=="Object_8") o.material.color.setHex(0x0022ff);   //head
+					//if(o.name=="Object_9") o.material.color.setHex(0x0022ff);   //neck
+					if(o.name=="Object_10") o.material.color.setHex(0x0022ff);   //chest
+					if(o.name=="Object_11") o.material.color.setHex(0x0022ff);   //spina
+					if(o.name=="Object_12") o.material.color.setHex(0x0022ff);   //anca
+					if(o.name=="Object_13") o.material.color.setHex(0x0022ff);   //gamba
+					if(o.name=="Object_16") o.material.color.setHex(0x0022ff);   //foot
+					if(o.name=="Object_17") o.material.color.setHex(0x0022ff);   //spalla
+					if(o.name=="Object_18") o.material.color.setHex(0x0022ff);   //arm upper
+					if(o.name=="Object_22") o.material.color.setHex(0x0022ff);   //spalla
+					if(o.name=="Object_23") o.material.color.setHex(0x0022ff);   //upperarm
+					if(o.name=="Object_27") o.material.color.setHex(0x0022ff);   //anca
+					if(o.name=="Object_28") o.material.color.setHex(0x0022ff);   //lg upper
+					if(o.name=="Object_31") o.material.color.setHex(0x0022ff);   //booty
+					
+				}
+
+			});
+		}
+
+		function changeColor2(model){
+								
+			model.traverse ( o => {
+				if ( o.isMesh ){
+					o.material.color.setHex(0xff0095);
+				}
+			});
+		}
+
+	
+
 		function jumpingJack(){
 			coords2 = { r:-2.78, l: 2.78, j:0,
 				rl:-3.04, ll:3.04, lx:-0.16,llx:-0.16,
