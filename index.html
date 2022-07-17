@@ -11,42 +11,57 @@
 <canvas id="c"></canvas>
     <div id="content">
       <div>
-        <h2 style="margin-top:-50px; color:rgb(255, 238, 0) ;">Kick Off</h2>
-			<ul style="margin-top:-100px" class="menu cf">
+        <h2 style="margin-top:-10px; color:rgb(255, 238, 0) ; font-size: 11vw;">Kick Off</h2>
+		<br><br><br><br><br><br>
+			<ul style="margin-top:-180px" class="menu cf">
 				<li><a href="">Match Time</a>
 					<ul class="submenu">
-						<li><a href="" onclick="return Time(1);">Day</a></li>
-						<li><a href="" onclick="return Time(2);">Sunset</a></li>
-						<li><a href="" onclick="return Time(3);">Night</a></li>
+						<li><a onclick="return Time(1);">Day</a></li>
+						<li><a onclick="return Time(2);">Sunset</a></li>
+						<li><a onclick="return Time(3);">Night</a></li>
 					  </ul>	
 				</li>
 				
 				<li><a href="">Mode</a>
 					<ul class="submenu">
-						<li><a href="" onclick="return Mode(1);">Beginner</a></li>
-						<li><a href="" onclick="return Mode(2);">Legend</a></li>
+						<li><a onclick="return Mode(1);">Beginner</a></li>
+						<li><a onclick="return Mode(2);">Legend</a></li>
+					  </ul>	
+				</li>
+				<li><a href="">Credits</a>
+					<ul class="submenu">
+						<li><a >Alessia 👩🏻‍💻🎀</a></li>
+						<li><a >Domenico 👨🏻‍💻🔳</a></li>
 					  </ul>	
 				</li>
 			  </ul>
 			  <br>
-			  <ul style="margin-top:-50px;" class="menu cf">
+			  <ul style="margin-top:70px;" class="menu cf">
 				<li >
 				  <a href="">Uniform Player</a>
 				  <ul class="submenu">
-					<li><a href="" onclick="return ColorFP(1);">Green Uniform</a></li>
-					<li><a href="" onclick="return ColorFP(2);">Blue Uniform</a></li>
+					<li><a onclick="return ColorFP(1);">Green Uniform</a></li>
+					<li><a onclick="return ColorFP(2);">Blue Uniform</a></li>
 				  </ul>			
 				</li>
 				<li><a href="">Uniform Keeper</a>
 					<ul class="submenu">
-						<li><a href="" onclick="return ColorFK(1);" >Red Uniform</a></li>
-						<li><a href="" onclick="return ColorFK(2);">Fucsia Uniform</a></li>
+						<li><a onclick="return ColorFK(3);" >Red Uniform</a></li>
+						<li><a onclick="return ColorFK(4);">Fucsia Uniform</a></li>
 					  </ul>	
 				</li>
 			  </ul>
+			  <br><br><br>
 			  <button id = "start1" onclick="location.href='game.html'" class="button button1">Kick Off !</button>
+			  <br><br>
+			  <h7 style="color:rgb(255, 238, 0) ;">Select here the modality, then click Kick OFF!</h7><br>
+			  <h7 style="color:rgb(255, 238, 0) ;">Use A to keep moving, the ARROWS to choose the direction and K to kick when in front of the keeper.</h7><br>
+			  <h7 style="color:rgb(255, 238, 0) ;">Dodge the obstacles and try to score GOALS!</h7>
       </div>
     </div>
+
+
+	
 
 	<script type="module" src="./js/three.module.js"></script>
 	<script type="module" src="./js/main.js"></script>
