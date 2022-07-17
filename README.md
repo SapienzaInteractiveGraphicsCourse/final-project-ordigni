@@ -1,5 +1,5 @@
 Link: https://sapienzainteractivegraphicscourse.github.io/final-project-ordigni/
 
 Authors:
-Domenico Tersigni
+Domenico Tersigni,
 Alessia Orchi
