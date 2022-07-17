@@ -86,7 +86,8 @@ var footR3;
 var footL3;
 
 var coords2;
-var spotlight
+var spotlight;
+var spotlight2;
 
 var tween0;
 var tween;
@@ -186,7 +187,7 @@ function init() {
 		console.log("a")
 		if(time==3)  lux = new THREE.HemisphereLight( 0x252850,0x000000); //NOTTE
 		else if(time==1) lux = new THREE.HemisphereLight( 0xffffff,0x00000); 
-		else if(time==2)lux = new THREE.HemisphereLight( 0xffffff,0x00000); 
+		else if(time==2)lux = new THREE.HemisphereLight( 0xff9d00,0xff0000); 
 		lux.position.set( 0, 40,-30 );
 		scene.add( lux );
 	}
@@ -202,6 +203,19 @@ function init() {
 		spotlight.angle = 1;
 		scene.add(spotlight)
 		scene.add( spotlight.target );
+
+		spotlight2 = new THREE.SpotLight(0xffffff,1.0);
+		spotlight2.position.set(68,2,-108.2);
+		spotlight2.target.position.set(70,-8.55,-108.2);
+		//spotlight.rotation.z=0.1
+		spotlight2.castShadow = true;
+		
+		spotlight2.angle = 1;
+		scene.add(spotlight2)
+		scene.add( spotlight2.target );
+
+
+
 	}
 
 	/*const dirLight = new THREE.DirectionalLight( 0xffffff );
@@ -288,6 +302,7 @@ function init() {
 	const cube= new THREE.Mesh(geometry, material3)
 	cube.position.set(-10,-7,-88.2)
 	cube.scale.set(3,3,3);
+	cube.receiveShadow=true;
 	scene.add(cube)
 	arrayObsX.push(cube.position.x);
 	arrayObsZ.push(cube.position.z);
@@ -335,7 +350,7 @@ function init() {
 
 	cube4.position.set(-10,-7,-112.2)
 	cube4.scale.set(3,3,3);
-
+	cube4.receiveShadow=true;
 
 	scene.add(cube4)
 
@@ -362,6 +377,7 @@ function init() {
 
 
 	const cube5= new THREE.Mesh(geometry5, material5)
+	cube5.receiveShadow=true;
 
 	cube5.position.set(-10,-7,-122.2)
 	cube5.scale.set(3,3,3);
@@ -413,6 +429,7 @@ function init() {
 	const cube6 = new THREE.Mesh( geometry6, materials6 );
 	cube6.position.set(-10,-7,-130.2)
 	cube6.scale.set(3,3,3);
+	cube6.receiveShadow=true;
 	scene.add( cube6 );	
 
 	arrayObsX.push(cube6.position.x);
@@ -745,6 +762,7 @@ function init() {
 	const cubeADV3 = new THREE.Mesh( geometryADV3, materialsADV3 );
 	cubeADV3.position.set(70,10,-108.5)
 	cubeADV3.scale.set(3,3,3);
+	cubeADV3.receiveShadow=true;
 	scene.add( cubeADV3 );
 
 	/**********ADV4**********/
@@ -776,6 +794,7 @@ function init() {
 	const cubeADV4 = new THREE.Mesh( geometryADV4, materialsADV4 );
 	cubeADV4.position.set(70,10,-82.5)
 	cubeADV4.scale.set(3,3,3);
+	cubeADV4.receiveShadow=true;
 	scene.add( cubeADV4 );
 
 	/**********ADV5**********/
@@ -807,6 +826,7 @@ function init() {
 	const cubeADV5 = new THREE.Mesh( geometryADV5, materialsADV5 );
 	cubeADV5.position.set(70,10,-134.5)
 	cubeADV5.scale.set(3,3,3);
+	cubeADV5.receiveShadow=true;
 	scene.add( cubeADV5 );
 
 	/*******************END ADV *********************/
@@ -827,8 +847,8 @@ function init() {
 		gltf.scene.traverse( function ( object ) {
 
 			if ( object.isMesh ){
-				object.castShadow = true;
 				objects.push(object);
+				object.receiveShadow=true;
 			}
 
 
@@ -846,6 +866,8 @@ function init() {
 		getPartiDelCorpo(modelMesh5);
 
 	} );
+	/************END PLAYER ***********/
+	//CAR
 	const loader3 = new GLTFLoader();
 	var model3 = new THREE.Object3D();
 
@@ -853,8 +875,9 @@ function init() {
 
 		gltf.scene.traverse( function ( object ) {
 
-			if ( object.isMesh ) { object.castShadow = true;
-				object.material.color.setHex(0xffffff );
+			if ( object.isMesh ) { 
+				object.castShadow = true;
+			
 			}
 			} );
 
@@ -869,7 +892,7 @@ function init() {
 
 	} );
 
-	/************END PLAYER ***********/
+	
 	/************KEEPER ***********/
 	const loaderKeeper = new GLTFLoader();
 	loaderKeeper.load( './models/scene.gltf', function ( gltf ) {
@@ -877,8 +900,7 @@ function init() {
 		gltf.scene.traverse( function ( object ) {
 
 			if ( object.isMesh ){
-				object.castShadow = true;
-			
+				object.receiveShadow=true;
 				//if(colorK==4) object.material.color.setHex(0xf400a1 );
 				objects.push(object);
 			}
@@ -910,7 +932,7 @@ function init() {
 	gltf.scene.traverse( function ( object ) {
 
 	if ( object.isMesh ){
-	object.castShadow = true;
+	object.receiveShadow=true;
 	object.material.color.setHex(0xffff00);
 	objects.push(object);
 	}
