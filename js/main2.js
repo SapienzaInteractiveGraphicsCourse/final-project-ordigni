@@ -27,6 +27,7 @@ var modelMesh2;
 var modelMesh3;
 var modelMesh4;
 var modelMesh5;
+var modelMesh8;
 var modelball;
 var modelKeeper;
 var coords;
@@ -85,6 +86,19 @@ var LlegR3;
 var footR3;
 var footL3;
 
+var armR4;
+var armL4;
+var LarmR4;
+var LarmL4;
+var root4;
+var chest4;
+var legR4;
+var legL4;
+var LlegL4;
+var LlegR4;
+var footR4;
+var footL4;
+
 var coords2;
 var spotlight;
 var spotlight2;
@@ -97,6 +111,8 @@ var tween4;
 var tween5;
 var tween6;
 var tween7;
+var tween79;
+var tween50;
 
 var tween8;
 var tween9;
@@ -132,6 +148,7 @@ var mode;
 
 var frontPort = false;
 
+var currentTween;
 
 init();
 animate();
@@ -279,8 +296,8 @@ function init() {
 
 		modelball = gltf.scene;
 		modelball.position.y= -8.55;
-		modelball.position.z= -107.2;
-		modelball.position.x= 40.8;
+		modelball.position.z= -108.2;
+		modelball.position.x= 50;
 		modelball.scale.set(3.5,3.5,3.5)
 		modelball.material = new THREE.MeshPhongMaterial({emissive: 0xFFFAF0}); 
 		scene.add( modelball);
@@ -299,7 +316,7 @@ function init() {
 	material3.bumpMap = normalTexture3
 	material3.bumpScale = 10;
 	const cube= new THREE.Mesh(geometry, material3)
-	cube.position.set(-10,-7,-88.2)
+	cube.position.set(-5,-7,-88.2)
 	cube.scale.set(3,3,3);
 	cube.receiveShadow=true;
 	scene.add(cube)
@@ -323,7 +340,7 @@ function init() {
 	material.displacementBias = 3;
 	*/
 	const plane2 = new THREE.Mesh(planeGeometry2, material2)
-	plane2.position.set(-10,-7,-100.2)
+	plane2.position.set(-5,-7,-100.2)
 	plane2.scale.set(3,3,3);
 	scene.add(plane2)
 	arrayObsX.push(plane2.position.x);
@@ -347,7 +364,7 @@ function init() {
 
 	const cube4= new THREE.Mesh(geometry4, material4)
 
-	cube4.position.set(-10,-7,-112.2)
+	cube4.position.set(-5,-7,-112.2)
 	cube4.scale.set(3,3,3);
 	cube4.receiveShadow=true;
 
@@ -378,7 +395,7 @@ function init() {
 	const cube5= new THREE.Mesh(geometry5, material5)
 	cube5.receiveShadow=true;
 
-	cube5.position.set(-10,-7,-122.2)
+	cube5.position.set(-5,-7,-122.2)
 	cube5.scale.set(3,3,3);
 
 	scene.add(cube5)
@@ -426,7 +443,7 @@ function init() {
 	const geometry6 = new THREE.BoxGeometry( 1, 1, 1 );
 
 	const cube6 = new THREE.Mesh( geometry6, materials6 );
-	cube6.position.set(-10,-7,-130.2)
+	cube6.position.set(-5,-7,-130.2)
 	cube6.scale.set(3,3,3);
 	cube6.receiveShadow=true;
 	scene.add( cube6 );	
@@ -520,7 +537,7 @@ function init() {
 	cone = gltf.scene;
 	cone.position.y= -8.55;
 	cone.position.z= -108.2;
-	cone.position.x= -25;
+	cone.position.x= -20;
 	cone.scale.set(0.5,0.5,0.5)
 
 	scene.add( cone);
@@ -532,7 +549,7 @@ function init() {
 	cone3.scale.set(0.5,0.5,0.5)
 	cone3.position.y= -8.55;
 	cone3.position.z= -120.2;
-	cone3.position.x= -25 ;
+	cone3.position.x= -20 ;
 
 	scene.add(cone3);
 	arrayConeX.push(cone3.position.x);
@@ -543,7 +560,7 @@ function init() {
 	cone4.scale.set(0.5,0.5,0.5)
 	cone4.position.y= -8.55;
 	cone4.position.z= -96.2;
-	cone4.position.x= -25 ;
+	cone4.position.x= -20 ;
 
 	scene.add(cone4);
 	arrayConeX.push(cone4.position.x);
@@ -554,7 +571,7 @@ function init() {
 	cone2.scale.set(0.5,0.5,0.5)
 	cone2.position.y= -8.55;
 	cone2.position.z= -132.2;
-	cone2.position.x= -25 ;
+	cone2.position.x= -20;
 
 	scene.add(cone2);
 	arrayConeX.push(cone2.position.x);
@@ -576,7 +593,7 @@ function init() {
 	cone6.scale.set(0.5,0.5,0.5)
 	cone6.position.y= -8.55;
 	cone6.position.z= -84.2;
-	cone6.position.x= -25 ;
+	cone6.position.x= -20 ;
 
 	scene.add(cone6);
 	arrayConeX.push(cone6.position.x);
@@ -587,7 +604,7 @@ function init() {
 	cone7.scale.set(0.5,0.5,0.5)
 	cone7.position.y= -8.55;
 	cone7.position.z= -142.2;
-	cone7.position.x= -25 ;
+	cone7.position.x= -20 ;
 
 	scene.add(cone7);
 	arrayConeX.push(cone7.position.x);
@@ -609,7 +626,7 @@ function init() {
 	cone9.scale.set(0.5,0.5,0.5)
 	cone9.position.y= -8.55;
 	cone9.position.z= -74.2;
-	cone9.position.x= -25 ;
+	cone9.position.x= -20 ;
 
 	scene.add(cone9);
 	arrayConeX.push(cone9.position.x);
@@ -838,6 +855,7 @@ function init() {
 	modelMesh4 = new THREE.Object3D();
 	/*********PLAYER******/
 
+	modelMesh8 = new THREE.Object3D();
 	modelMesh5 = new THREE.Object3D();
 
 	const loader2 = new GLTFLoader();
@@ -949,6 +967,36 @@ function init() {
 	scene.add( modelMesh1);
 	getPartiDelCorpo3(modelMesh1);
 	jumpingJack();
+	} );
+
+/////////////////
+
+	var modelMesh8 = new THREE.Object3D();
+
+	const loaderNext1 = new GLTFLoader();
+	loaderNext1.load( './models/scene.gltf', function ( gltf ) {
+
+	gltf.scene.traverse( function ( object ) {
+
+	if ( object.isMesh ){
+	object.receiveShadow=true;
+	object.material.color.setHex(0xffff00);
+	objects.push(object);
+	}
+
+
+	} );
+
+	modelMesh8 =  SkeletonUtils.clone(gltf.scene);
+	modelMesh8.scale.set(0.5,0.5,0.5)
+	modelMesh8.position.y= -8.55;
+	modelMesh8.position.z= -144.2;
+	modelMesh8.position.x= -25;
+	modelMesh8.rotation.y=-20.4;
+
+	scene.add(modelMesh8);
+	getPartiDelCorpo5(modelMesh8);
+	run1();
 	} );
 	/************END NEXTPLAYER ***********/
 
@@ -1127,6 +1175,46 @@ function getPartiDelCorpo3(model){
 	} );
 }
 
+function getPartiDelCorpo5(model){
+
+	model.traverse ( o => {
+	//console.log(o.name+": "+o.type);
+	// Reference the neck and waist bones
+	if ( o.name === 'armr_07') { 
+	armR4 = o;
+	}
+	if ( o.name === 'arml_04') { 
+	armL4 = o;
+	}
+
+	if ( o.name === 'Sketchfab_model') { 
+	root4 = o;
+	}
+	if ( o.name === 'chest_01') { 
+	chest4 = o;
+	}
+	if ( o.name === 'upperlegr_013') { 
+	legR4= o;
+	}
+	if ( o.name === 'upperlegl_010') { 
+	legL4 = o;
+	}
+	if ( o.name === 'lowerlegl_011') { 
+	LlegL4 = o;
+	}
+	if ( o.name === 'lowerlegr_014') { 
+	LlegR4 = o;
+	}
+	if ( o.name === 'footl_012') { 
+	footL4 = o;
+	}
+	if ( o.name === 'footr_015') { 
+	footR4 = o;
+	}
+
+	} );
+}
+
 function getPartiDelCorpo4(model3){
 								
 	model3.traverse ( o => {
@@ -1137,6 +1225,8 @@ function getPartiDelCorpo4(model3){
 		
 	} );
 }
+
+
 /*
 function ball(){
 
@@ -1199,6 +1289,168 @@ function ball(){
 	//console.log(playerSelected)
 }
 
+function run1(){
+
+	var coords4 = { r:-2.78, l: 2.78, j:0,hx:0,
+	rl: -2.84, ll: 2.84, lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15} // Start at (0, 0)
+
+
+	var tween = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({r:-0.78, l: 2.78 ,j: 0, hx:0.5,
+	rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	root4.position.y= coords4.j
+	chest4.rotation.z= coords4.hx
+	armR4.rotation.z= coords4.r;
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.rx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.rlx;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords.x);
+	})
+	// Start the tween immediately.
+
+	var tween2 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({r:-0.38, l: 2.58 ,j: 0, hx:0.7,
+	rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15}, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	root4.position.y= coords4.j
+	chest4.rotation.z= coords4.hx
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.rx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.rlx;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords.x);
+	})
+	// Start the tween immediately.
+
+	var tween3 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({r:-2.78, l: 2.78, j:0,hx:0,
+	rl: -2.84, ll: 2.84, lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15}, 400) // Move to (300, 200) in 1 second.
+	.delay(500)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	root4.position.y= coords4.j
+	chest4.rotation.z= coords4.hx
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.rx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.rlx;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	})
+	// Start the tween immediately.
+
+	var tween4 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({r:-2.78, l: 0.78 ,j: 0, hx:-0.5,
+	rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15  }, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	root4.position.y= coords4.j
+	chest4.rotation.z= coords4.hx
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.rx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.rlx;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords.x);
+	})
+	// Start the tween immediately.
+
+	var tween5 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({r:-2.58, l: 0.38 ,j: 0, hx:-0.7,
+	rl: -2.84, ll: 2.84,  lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	root4.position.y= coords4.j
+	chest4.rotation.z= coords4.hx
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.rx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.rlx;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords.x);
+	})
+
+	var tween6 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({r:-2.78, l: 2.78, j:0,hx:0,
+	rl: -2.84, ll: 2.84, lx:-0.16,rx:-0.16,rlx:-0.16,llx:-0.16,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+	.delay(500)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	root4.position.y= coords4.j
+	chest4.rotation.z= coords4.hx
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.rx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.rlx;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	})
+	// Start the tween immediately.
+
+	tween.chain(tween2);
+	tween2.chain(tween3);
+	tween3.chain(tween4);
+	tween4.chain(tween5);
+	tween5.chain(tween6);
+	tween6.chain(tween);
+	tween.start();
+	
+}
 
 
 function run(){
@@ -1361,6 +1613,7 @@ function run(){
 	tween5.chain(tween6);
 	tween6.chain(tween);
 	tween.start();
+	
 }
 
 
@@ -1392,6 +1645,153 @@ function readyToKick(){
 
 }
 
+function readyToKick1(){
+	var tweenk = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords'.
+	.to({ lar:-0.02,lal:-0.02,al:-0.08,ar:-0.08,arz:0.13,
+	llr:-0.11,lll:-0.11,ll:-0.16,lr:-0.16,rf:-0.95,hx: 0,llrz:-0.11,lf:-0.95},100) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	verifyHit();
+	LarmR.rotation.x= coords2.lar;
+	LarmL.rotation.x= coords2.lal;
+	chest.rotation.x= coords2.hx
+	armR.rotation.x= coords2.ar;
+	armL.rotation.x= coords2.al;
+	LarmR.rotation.z= coords2.arz;
+	legL.rotation.x= coords2.ll;
+	legR.rotation.x= coords2.lr;
+	LlegR.rotation.x=coords2.llr;
+	LlegL.rotation.x=coords2.lll;
+	footR.rotation.x = coords2.rf;
+	footL.rotation.x = coords2.lf;
+	})
+
+	tweenk.start();
+
+}
+//////
+function jumpingJack1(){
+	var coords4 = { r:-2.78, l: 2.78, j:0,
+	rl:-3.04, ll:3.04, lx:-0.16,llx:-0.16,
+	fr:-0.1,fl:0.1,fx: -1,fly:0,fry:0 } // Start at (0, 0)
+
+
+	var tweenj = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords'.
+	.to({ r: -1.38, l: 1.38 ,j: 3,
+	rl: -2.94, ll: 2.94,lx:-0.16,llx:-0.16,
+	fr:-0.1,fl:0.1,fx: -1,fly:0,fry:0}, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords'.
+	// Move 'box' to the position described by 'coords' with a CSS translation.
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	root4.position.y= coords4.j
+	legR4.rotation.z= coords4.rl;
+	legL4.rotation.z= coords4.ll;
+	footR4.rotation.z=coords4.fr;
+	footL4.rotation.z=coords4.fl;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords3.x);
+	})
+	// Start the tween immediately.
+
+
+
+	var tween2 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords3'.
+	.to({ r: -0.38, l: 0.38 ,j: 0,
+	rl: -2.84, ll: 2.84, lx:0.6,llx:1.0,
+	fr:-0.3,fl:0.3,fx: -1.4,fly:-0.15,fry:0.15 }, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords3'.
+	// Move 'box' to the position described by 'coords3' with a CSS translation.
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	root4.position.y= coords4.j
+	legR4.rotation.z= coords4.rl;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	legR4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.llx;
+	LlegL4.rotation.x=coords4.llx;
+	footR4.rotation.z=coords4.fr;
+	footL4.rotation.z=coords4.fl;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords3.x);
+	})
+
+
+
+	var tween3 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords3'.
+	.to({ r: -1.38, l: 1.38 ,j: 3, //arm and root
+	rl: -2.94, ll: 2.94,lx:-0.16,llx:-0.16, //legs
+	fr:-0.02,fl:0.02,fx: -0.4, fly:0.01,fry:0.01 }, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords3'.
+	// Move 'box' to the position described by 'coords3' with a CSS translation.
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	root4.position.y= coords4.j
+	legR4.rotation.z= coords4.rl;
+	legR4.rotation.x= coords4.lx;
+	legL4.rotation.z= coords4.ll;
+	legL4.rotation.x= coords4.lx;
+	LlegR4.rotation.x=coords4.llx;
+	LlegL4.rotation.x=coords4.llx;
+	footR4.rotation.z=coords4.fr;
+	footL4.rotation.z=coords4.fl;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords3.x);
+	})
+
+
+
+	var tween4 = new TWEEN.Tween(coords4) // Create a new tween that modifies 'coords3'.
+	.to({ r:-2.78, l: 2.78, j:0,
+	rl:-3.04, ll:3.04, lx:-0.16,llx:-0.16,
+	fr:-0.1,fl:0.1,fx: -1,fly:0,fry:0 }, 400) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Quadratic.Out) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords3'.
+	// Move 'box' to the position described by 'coords3' with a CSS translation.
+	armR4.rotation.z= coords4.r;
+	armL4.rotation.z= coords4.l;
+	root4.position.y= coords4.j
+	legR4.rotation.z= coords4.rl;
+	legL4.rotation.z= coords4.ll;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.z=coords4.fr;
+	footL4.rotation.z=coords4.fl;
+	footR4.rotation.x=coords4.fx;
+	footL4.rotation.x=coords4.fx;
+	footR4.rotation.y=coords4.fry;
+	footL4.rotation.y=coords4.fly;
+	//console.log(coords2.x);
+	})
+
+	tweenj.chain(tween2);
+	tween2.chain(tween3);
+	tween3.chain(tween4);
+	tween4.chain(tweenj);
+	tweenj.start();
+
+
+}
+////
 function jumpingJack(){
 	var coords3 = { r:-2.78, l: 2.78, j:0,
 	rl:-3.04, ll:3.04, lx:-0.16,llx:-0.16,
@@ -2197,6 +2597,31 @@ function kicking(n){
 
 	})
 
+//////////////////////////////////////////////
+tween79 = new TWEEN.Tween(coords2) // Create a new tween that modifies 'coords2'.
+	.to({lar:-0.02,lal:-0.02,al:-0.08,ar:-0.08,arz:0.13,
+		llr:-0.11,lll:-0.11,ll:-0.16,lr:-0.16,rf:-0.95,hx: 0,llrz:-0.11,lf:-0.95},500) // Move to (300, 200) in 1 second.
+	.delay(0)
+	.easing(TWEEN.Easing.Linear.None) // Use an easing function to make the animation smooth.
+	.onUpdate(function() { // Called after tween.js updates 'coords2'.
+	// Move 'box' to the position described by 'coords2' with a CSS translation.
+
+	LarmR.rotation.x= coords2.lar;
+	LarmL.rotation.x= coords2.lal;
+	chest.rotation.x= coords2.hx
+	armR.rotation.x= coords2.ar;
+	armL.rotation.x= coords2.al;
+	LarmR.rotation.z= coords2.arz;
+	legL.rotation.x= coords2.ll;
+	legR.rotation.x= coords2.lr;
+	LlegR.rotation.x=coords2.llr;
+	LlegL.rotation.x=coords2.lll;
+	footR.rotation.x = coords2.rf;
+	footL.rotation.x = coords2.lf;
+	modelMesh5.position.y += 0.01;
+	})
+
+/////////////////////////////////////////////
 
 
 	tween11.onComplete(()=>{tween2.start();});
@@ -2207,6 +2632,8 @@ function kicking(n){
 	tween6.onComplete(()=>{tween8.start();});
 	tween8.onComplete(()=>{tween9.start();});
 	tween9.onComplete(()=>{tween76.start();tween77.start();});
+	tween77.onComplete(()=>{tween79.start();});
+
 	//tween77.onComplete(()=>{tween78.start()})
 
 	tween11.start();
@@ -3025,19 +3452,24 @@ function play(){
 
 	})
 
-	tween0.onComplete(()=>{tween2.start();});
-	tween2.onComplete(()=>{tween3.start();});
-	tween3.onComplete(()=>{tween4.start();});
-	tween4.onComplete(()=>{tween5.start();});
-	tween5.onComplete(()=>{tween6.start();});
-	tween6.onComplete(()=>{tween7.start();});
-	tween7.onComplete(()=>{tween0.start();});
+	currentTween = tween0;
+	tween0.onComplete(()=>{currentTween = tween2; tween2.start();});
+	tween2.onComplete(()=>{currentTween = tween3; tween3.start();});
+	tween3.onComplete(()=>{currentTween = tween4; tween4.start();});
+	tween4.onComplete(()=>{currentTween = tween5; tween5.start();});
+	tween5.onComplete(()=>{currentTween = tween6; tween6.start();});
+	tween6.onComplete(()=>{currentTween = tween7; tween7.start();});
+	tween7.onComplete(()=>{currentTween = tween0; tween0.start();});
 
 
 	tween0.start();
 
 
 }
+
+
+
+
 
 
 function downPress(event) {
@@ -3051,41 +3483,43 @@ function downPress(event) {
 	if(check) {
 	check=false;
 	play();
+
 	}
 
 	break;
 	case 37: // <-,
 
-	if(check) {
+	
 	modelMesh5.rotation.y = 0.1;
 	left=true;
 	straight=false;
 	right=false;
-	}
+	
 
 	break;
 
 	case 39: // ->,
 
-	if(check) {
+	
 	modelMesh5.rotation.y = 3.1;
 	left=false;
 	straight=false;
 	right=true;
-	}
+	
 
 	break;
 
 	case 38: // ^,
-	if(check) {
+	
 	modelMesh5.rotation.y = -20.4;
 	left=false;
 	straight=true;
 	right=false;
-	}
+	
 	break;
 
 	case 75:
+	
 	if(frontPort){
 		frontPort=false;
 		var rand=Math.floor(Math.random() * 4);
@@ -3118,7 +3552,7 @@ function downPress(event) {
 		window.setTimeout(function(){window.location.href="game.html?keep=true"},3000)
 		}
 	}
-
+	
 
 	break;
 
@@ -3140,9 +3574,16 @@ function upPress(event) {
 	switch(key){
 
 	case 65:
-	tween7.onComplete(()=>{check=true;});
-	break;
+	
 
+	
+	currentTween.onComplete(()=>{ if(!frontPort) check=true;});
+
+	verifyKick();
+
+	readyToKick1();
+	
+	break;
 	}
 }
 
@@ -3228,7 +3669,7 @@ function car(){
 
 
 function verifyKick(){
-	if(modelMesh5.position.x>30) {
+	if(modelMesh5.position.x>30 ) {
 	tween7.onComplete(()=>{kick=true;frontPort=true;});
 	readyToKick();
 	}
@@ -3303,6 +3744,7 @@ function changeColorK(model,n){
 }
 
 
+
 function changeColorP(model,n){
 								
 	model.traverse ( o => {
@@ -3357,8 +3799,4 @@ function changeColorP(model,n){
 
 
 
-
-
-
-//
 
